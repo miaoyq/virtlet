@@ -89,7 +89,7 @@ func TestRootVolumeLifeCycle(t *testing.T) {
 
 	rootVol := volumes[0]
 
-	vol, err := rootVol.Setup()
+	vol, _, err := rootVol.Setup()
 	if err != nil {
 		t.Errorf("Setup returned an error: %v", err)
 	}
@@ -148,3 +148,5 @@ func (vo fakeVolumeOwner) ImageManager() ImageManager {
 func (vo fakeVolumeOwner) RawDevices() []string { return nil }
 
 func (vo fakeVolumeOwner) KubeletRootDir() string { return "" }
+
+func (vo fakeVolumeOwner) VolumePoolName() string { return "" }
